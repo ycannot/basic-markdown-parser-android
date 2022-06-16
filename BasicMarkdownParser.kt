@@ -59,10 +59,13 @@ object BasicMarkdownParser {
         s: String,
         specialChar: String
     ): ArrayList<Recurrence> {
-        val regex = Regex("\\$specialChar.+\\$specialChar")
+        val regex = Regex("\\$specialChar(.*?)\\$specialChar")
         return regex.findAll(s).mapTo(arrayListOf()) { match ->
             val startIndex = calculateRefinedStartIndex(s, match)
-            val endIndex = startIndex + match.value.length - match.value.count(specialChar)
+            val endIndex = startIndex + match.value.length
+            specialCharset.forEach {
+                endIndex -= match.value.count(it)
+            }
             Recurrence(
                 match.value,
                 startIndex,
