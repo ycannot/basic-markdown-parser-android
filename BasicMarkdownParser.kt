@@ -1,3 +1,8 @@
+/**
+ * @author Yiğit Can Yılmaz (ycannot, https://github.com/ycannot)
+ * @date 14.06.2022
+ */
+
 import android.graphics.Color
 import android.text.Spannable
 import android.text.SpannableStringBuilder
